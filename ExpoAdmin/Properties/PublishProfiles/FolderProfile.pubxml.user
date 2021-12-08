@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\Expo2021\ExpoAdmin\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2021-12-08T16:08:15.9546945Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="ExpoAdmin.Data.ApplicationDbContext">
+      <Value>Server=%28localdb%29\mssqllocaldb%3bDatabase=aspnet-ExpoAdmin-09E348F4-454B-4084-9A36-80F65FBBF147%3bTrusted_Connection=True%3bMultipleActiveResultSets=true</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

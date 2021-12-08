@@ -11,13 +11,21 @@ namespace ExpoAdmin.Data
         [Key]
         public int Id { get; set; }
         public DateTime TimeCreated { get; set; }
+        [Required]
         public string FullName { get; set; }
         public string Organization { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public string Title { get; set; }
+        [Required]
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
+        [Required]
         public string City { get; set; }
+        [Required]
         public string Gender { get; set; }
+        [Required]
         public string State { get; set; }
     }
 }

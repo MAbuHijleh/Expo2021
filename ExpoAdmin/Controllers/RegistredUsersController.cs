@@ -46,8 +46,10 @@ namespace ExpoAdmin.Controllers
         }
 
         // GET: RegistredUsers/Create
-        public IActionResult Create()
+        public IActionResult Create(string message)
         {
+            if (!string.IsNullOrWhiteSpace(message))
+                TempData["status"] = message;
             return View();
         }
 
@@ -62,7 +64,8 @@ namespace ExpoAdmin.Controllers
             {
                 _context.Add(registredUser);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                return RedirectToAction(nameof(Create), new { message = "success!" });
             }
             return View(registredUser);
         }

@@ -58,8 +58,9 @@ namespace ExpoAdmin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TimeCreated,FullName,Organization,Email,Phone,City,Gender,State")] RegistredUser registredUser)
+        public async Task<IActionResult> Create([Bind("Id,FullName,Organization,Title,Email,Phone,City,Gender,State")] RegistredUser registredUser)
         {
+            registredUser.TimeCreated = DateTime.UtcNow;
             if (ModelState.IsValid)
             {
                 _context.Add(registredUser);

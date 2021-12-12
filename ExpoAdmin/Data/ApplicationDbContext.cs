@@ -16,7 +16,7 @@ namespace ExpoAdmin.Data
         //entities
         public DbSet<QuestionAnswerModel> Questions { get; set; }
         public DbSet<QuestionareEntry> Entries { get; set; }
-        public DbSet<RegistredUser> Users { get; set; }
+        public DbSet<RegistredUser> RUsers { get; set; }
 
     }
 }

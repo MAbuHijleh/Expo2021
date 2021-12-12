@@ -48,7 +48,7 @@ namespace ExpoAdmin.Controllers
                                        || s.Phone.Contains(searchString) );
             }
 
-            int pageSize = 1;
+            int pageSize = 50;
             return View(await PaginatedList<RegistredUser>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 

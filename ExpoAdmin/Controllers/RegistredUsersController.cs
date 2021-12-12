@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ExpoAdmin.Data;
 using Microsoft.AspNetCore.Authorization;
+using ExpoAdmin.Models;
 
 namespace ExpoAdmin.Controllers
 {
@@ -21,9 +22,34 @@ namespace ExpoAdmin.Controllers
 
         // GET: RegistredUsers
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+            string currentFilter,
+            string searchString,
+            int? pageNumber
+            )
         {
-            return View(await _context.RUsers.ToListAsync());
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var students = from s in _context.RUsers
+                           select s;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.FullName.Contains(searchString)
+                                       || s.Email.Contains(searchString) 
+                                       || s.Phone.Contains(searchString) );
+            }
+
+            int pageSize = 1;
+            return View(await PaginatedList<RegistredUser>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: RegistredUsers/Details/5
@@ -94,7 +120,7 @@ namespace ExpoAdmin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,TimeCreated,FullName,Organization,Email,Phone,City,Gender,State")] RegistredUser registredUser)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FullName,Organization,Title,Email,Phone,City,Gender,State")] RegistredUser registredUser)
         {
             if (id != registredUser.Id)
             {

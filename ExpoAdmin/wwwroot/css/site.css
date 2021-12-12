@@ -44,23 +44,39 @@ html {
 
 @media print {
     header {
-        display: none;
+        display: none !important;
     }
 
     footer {
-        display: none;
+        display: none !important;
     }
 
-    main> div {
-        display: none;
+    main > div {
+        display: none !important;
     }
 
-    main> h1 {
-        display: none;
+    main > p {
+        display: none !important;
+    }
+
+    main > table {
+        display: none !important;
+    }
+
+    main > h1 {
+        display: none !important;
+    }
+
+    main > form {
+        display: none !important;
+    }
+
+    main > a {
+        display: none !important;
     }
 
     main .printable {
-        display: flex;
+        display: flex !important;
     }
 }
 

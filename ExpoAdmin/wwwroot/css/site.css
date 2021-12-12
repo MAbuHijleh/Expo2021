@@ -101,6 +101,37 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
+.corona-fighter img {
+    top: 0;
+    bottom: initial;
+    height: 100%;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.center-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    height: calc(100vh - 150px) !important;
+}
+
+.wrapper {
+    justify-content: center
+}
+
+    .wrapper .image-holder {
+        display: none
+    }
+
+    .wrapper form {
+        width: 60%
+    }
 
 
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
@@ -748,32 +779,7 @@ select {
 }
 
 @media (max-width: 992px) {
-    .corona-fighter img {
-        top: 0;
-        bottom: initial;
-        height: 100%;
-    }
-
-    .footer-info {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .content {
-        height: calc(100vh - 150px) !important;
-    }
-
-    .wrapper {
-        justify-content: center
-    }
-
-        .wrapper .image-holder {
-            display: none
-        }
-
-        .wrapper form {
-            width: 60%
-        }
+ 
 }
 
 

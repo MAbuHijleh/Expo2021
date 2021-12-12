@@ -5,40 +5,31 @@
     Layout = "_LayoutEmpty";
 }
 
-<div class="row">
-    <div class="col-6">
-        <img class="w-100" style="max-width:300px" src="~/images/expo.png" />
-    </div>
-    <div class="col-6">
-        <img class="w-100" style="max-width:300px" src="~/images/PITA Logo.png" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="display-flex flex-items-centered center-div">
+                <img class="w-100" style="max-width:300px" src="~/images/expo.png" />
+            </div>
+        </div>
     </div>
 </div>
+@*<div class="col">
+        <img class="w-100" style="max-width:300px" src="~/images/PITA Logo.png" />
+    </div>*@
 @if (TempData["status"] != null && TempData["status"].ToString() == "success!")
 {
     <div class="alert alert-success d-block" role="alert">
         You Have Registered Successfully
     </div>
 }
-<h4>ExpoTech Guests Registration</h4>
+<h4>Expotech 2021 Guest Registration</h4>
 <hr />
 <div class="row">
-    <div class="col-md">
+    <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="State" class="control-label"></label>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col">
-                        West Bank <input asp-for="State" type="radio" checked="checked" value="West Bank" class="form-control Custome-Radio Radio-width" />
-                    </div>
-                    <div class="col">
-                        Gaza Strip<input asp-for="State" type="radio" value="Gaza Strip" class="form-control Custome-Radio Radio-width" />
-                    </div>
-                </div>
-                <span asp-validation-for="State" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="FullName" class="control-label">Full Name</label>
                 <input asp-for="FullName" class="form-control" />
@@ -64,20 +55,30 @@
                 <input asp-for="Phone" class="form-control" />
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
+            @*<div class="form-group">
+                    <label asp-for="City" class="control-label"></label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
+                <label asp-for="State" class="control-label"></label>
+                <div class="row">
+                    <div class="col-4">
+                        West Bank <input asp-for="State" type="radio" checked="checked" value="West Bank" class="form-control Custome-Radio Radio-width" />
+                    </div>
+                    <div class="col-4">
+                        Gaza Strip<input asp-for="State" type="radio" value="Gaza Strip" class="form-control Custome-Radio Radio-width" />
+                    </div>
+                </div>
+                <span asp-validation-for="State" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Gender" class="control-label"></label>
-            </div>
-            <div class="form-group">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-4">
                         Male <input asp-for="Gender" type="radio" value="Male" checked="checked" class="form-control Custome-Radio Radio-width" />
                     </div>
-                    <div class="col">
+                    <div class="col-4">
                         Female <input asp-for="Gender" type="radio" value="Female" class="form-control Custome-Radio Radio-width" />
                     </div>
                 </div>
@@ -90,9 +91,21 @@
                 </div>
             </div>
         </form>
+
+        <hr />
+        <h5>Sponsored by</h5>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <img class="w-100" src="~/images/Iconnect.png" />
+                </div>
+                <div class="col-6">
+                    <img class="w-100" src="~/images/incube2.png" />
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

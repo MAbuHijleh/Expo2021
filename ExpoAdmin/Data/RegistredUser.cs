@@ -21,7 +21,6 @@ namespace ExpoAdmin.Data
         [Required]
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
-        [Required]
         public string City { get; set; }
         [Required]
         public string Gender { get; set; }

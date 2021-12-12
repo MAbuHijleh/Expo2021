@@ -23,7 +23,7 @@ namespace ExpoAdmin.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Users.ToListAsync());
+            return View(await _context.RUsers.ToListAsync());
         }
 
         // GET: RegistredUsers/Details/5
@@ -35,7 +35,7 @@ namespace ExpoAdmin.Controllers
                 return NotFound();
             }
 
-            var registredUser = await _context.Users
+            var registredUser = await _context.RUsers
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (registredUser == null)
             {
@@ -80,7 +80,7 @@ namespace ExpoAdmin.Controllers
                 return NotFound();
             }
 
-            var registredUser = await _context.Users.FindAsync(id);
+            var registredUser = await _context.RUsers.FindAsync(id);
             if (registredUser == null)
             {
                 return NotFound();
@@ -155,7 +155,7 @@ namespace ExpoAdmin.Controllers
 
         private bool RegistredUserExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.RUsers.Any(e => e.Id == id);
         }
     }
 }

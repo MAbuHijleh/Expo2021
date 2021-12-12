@@ -67,7 +67,7 @@ namespace ExpoAdmin
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=RegistredUsers}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
 

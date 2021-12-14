@@ -26,5 +26,6 @@ namespace ExpoAdmin.Data
         public string Gender { get; set; }
         [Required]
         public string State { get; set; }
+        public bool BadgePrinted { get; set; }
     }
 }

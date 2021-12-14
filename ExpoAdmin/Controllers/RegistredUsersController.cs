@@ -52,6 +52,28 @@ namespace ExpoAdmin.Controllers
             return View(await PaginatedList<RegistredUser>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
+        // GET: RegistredUsers/Print/5
+        [Authorize]
+        public async Task<IActionResult> Print(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var registredUser = await _context.RUsers
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (registredUser == null)
+            {
+                return NotFound();
+            }
+            registredUser.BadgePrinted = true;
+            _context.Update(registredUser);
+            await _context.SaveChangesAsync();
+
+            return Content("OK");
+        }
+
         // GET: RegistredUsers/Details/5
         [Authorize]
         public async Task<IActionResult> Details(int? id)

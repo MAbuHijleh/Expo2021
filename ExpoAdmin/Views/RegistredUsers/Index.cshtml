@@ -33,6 +33,9 @@
             <th>
                 Organization
             </th>
+            <th>
+                Badge Printed
+            </th>
             <th style="min-width: 300px;"></th>
         </tr>
     </thead>
@@ -50,9 +53,12 @@
                     @Html.DisplayFor(modelItem => item.Organization)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.BadgePrinted)
+                </td>
+                <td>
                     <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a class="btn btn-success" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <button class="btn btn-danger" onclick='printUser("@item.FullName","@item.Title","@item.Organization")'>Print Badge</button>
+                    <button class="btn btn-danger" onclick='printUser("@item.FullName","@item.Title","@item.Organization","@item.Id")'>Print Badge</button>
                 </td>
             </tr>
         }
@@ -68,14 +74,14 @@
    asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-default @prevDisabled">
+   class="btn btn-success @prevDisabled">
     Previous
 </a>
 <a asp-action="Index"
    asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    asp-route-currentFilter="@ViewData["CurrentFilter"]"
-   class="btn btn-default @nextDisabled">
+   class="btn btn-success @nextDisabled">
     Next
 </a>
 
@@ -95,13 +101,5 @@
 </div>
 
 @section Scripts {
-    <script type="text/javascript">
-        function printUser(FullName, Title, Organization) {
-            console.log(FullName);
-            $("#FullName").text(FullName);
-            $("#Title").text(Title);
-            $("#Organization").text(Organization);
-            window.print();
-        }
-    </script>
+    <script src="~/js/r-user-index.js"></script>
 }
